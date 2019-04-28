@@ -1,0 +1,21 @@
+#demo {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 0px;
+    border-style: solid;
+    color:rgb(21, 45, 63);
+  }
+
+  .ques{
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(79, 134, 177);
+  }
+  .opti{
+    color: rgb(65, 109, 143);
+  }
+  .btn-primary {
+    margin-left: 700px;
+    width: 200px;;
+    font-size: 25px;
+  }
