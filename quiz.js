@@ -1,6 +1,83 @@
+
+   //this function is called to do the changes if the user is loggedin
+//profile is added and login/signup buttons are removed
+function logUserIn(mail) {
+    $('#exampleModal').modal('hide');
+    $('#nav_login_btn').css('display', 'none');
+    $('#nav_signup_btn').css('display', 'none');
+    $('#profile_btn').css('display', 'inline');
+    $('#profile_name').text(mail);
+    // $('.navbar .nav-item.home').css('margin-left', '845px');
+}
+
+function startTimer(params) {
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+        
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+      // Get todays date and time
+      var now = new Date().getTime();
+        
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+        
+      // Time calculations for days, hours, minutes and seconds
+      
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML =  hours + "h "
+      + minutes + "m " + seconds + "s ";
+        
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+}
 $(document).ready(function () {
 
-   
+    startTimer();
+
+   //create users array 
+   var usersArray = [];
+   //check if the object in the local storage is already created 
+   //or this is the first time creating it(local storage is empty)
+   if (localStorage.getItem('user') === null){
+       //case local storage is empty, leave the array empty
+       //this step is for avoiding 'array is null' exception
+   }else{
+       //case local storage already has the object, then 
+       //get all the values in it to add to it to get the previous values
+       usersArray = JSON.parse(localStorage.getItem('user'))
+   }
+
+
+   //create users array 
+   var usersLogedinArray = [];
+   var userMail = '';
+   //check if the object in the local storage is already created 
+   //or this is the first time creating it(local storage is empty)
+   if (localStorage.getItem('user_signed') === null){
+       //case local storage is empty, leave the array empty
+       //this step is for avoiding 'array is null' exception
+   }else{
+       //case local storage already has the object, then 
+       //get all the values in it to add to it to get the previous values
+       usersLogedinArray = JSON.parse(localStorage.getItem('user_signed'));
+       userMail = usersLogedinArray.email;
+   }
+
+   if (usersLogedinArray.signed) {
+       logUserIn(userMail)
+   }
+
+
 
     var questions={
         "status": [ [
