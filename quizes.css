@@ -60,7 +60,7 @@
 .cards_section{
     padding-top: 60px;
     padding-bottom: 60px;
-    background-color: rgb(165, 165, 165);
+    background-color: rgb(206, 205, 205);
     /* background-image: url('images/bg.jpg');
     background-size: 100% 100%;
     background-attachment: fixed; */
@@ -73,7 +73,7 @@
     transition: box-shadow 1s;
 }
 .cards_section .card:hover{
-    box-shadow: 0px 0px 10px 5px rgb(184, 185, 185);
+    box-shadow: 0px 0px 10px 5px white;
 }
 #card1{background-image: url('images/c_sharp.jpg');}
 #card2{background-image: url('images/html52.jpg');}
@@ -159,6 +159,6 @@ form .form-group{
 .modal-body button{
     margin: 0px 40%; 
 }
-.modal-body #no_account{
+.modal-body #no_account_p{
     text-align: center;
 }

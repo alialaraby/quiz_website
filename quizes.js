@@ -51,42 +51,29 @@ $(document).ready(function () {
 
     $('#login_btn').click(function () {
 
-        //email value to use for checking and comparing if user already exists
         var userEmail = $('#exampleInputEmail1').val();
-        //boolean variable , is set to true if the email we are searching for
-        //already exists , initially set to false
         var found = false;
-        //case the local storage is empty, add the values directly 
-        //no need to check if the email exists as the object is already empty
-        if (localStorage.getItem('user') === null) {
-            var userX = new user($('#exampleInputEmail1').val(), $('#exampleInputPassword1').val());
-            usersArray.push(userX);
-            localStorage.setItem('user', JSON.stringify(usersArray));
-        }else{
-            //case local storage already contains data
-            //we loop the array contents to check if the email exists
-            for (var index = 0; index < usersArray.length; index++) {
-                if (usersArray[index].email == userEmail) {
-                    //if we found the email already exists 
-                    //set the variable to true and break the loop
-                    found = true;
-                    break;
-                }
-            }
-    
-            //here we check the variable 
-            //if true, then user exists already, don`t add it again
-            if (found) {
-
-            }else{
-                //if false, then user isn`t stored before
-                //we add it in this case
-                var userX = new user($('#exampleInputEmail1').val(), $('#exampleInputPassword1').val());
-                usersArray.push(userX);
-                localStorage.setItem('user', JSON.stringify(usersArray));
+        var username = '';
+        for (var index = 0; index < usersArray.length; index++) {
+            if (usersArray[index].email == userEmail) {
+                //if we found the email already exists 
+                //set the variable to true and break the loop
+                found = true;
+                username = usersArray[index].fname + ' ' + usersArray[index].fname;
+                break;
             }
         }
-        
+        if (found) {
+            alert("user exists, you are logged in");
+            $('#exampleModal').modal('hide');
+            $('#nav_login_btn').css('display', 'none');
+            $('#nav_signup_btn').css('display', 'none');
+            $('#profile_btn').css('display', 'inline');
+            $('#profile_name').text(username);
+            $('.navbar .nav-item.home').css('margin-left', '845px');
+        }else{
+            alert('this email doesn`t exist, signup')
+        }
     })
 })
 
