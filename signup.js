@@ -22,6 +22,13 @@ $(document).ready(function () {
         this.password = password;
     }
 
+    //user class to create user instances from it
+    function user_signed(email, signed) {
+        this.email = email;
+        this.signed = signed;
+    }
+
+    signed_in = false;
     $('#btn_signup').click(function () {
 
         
@@ -36,6 +43,11 @@ $(document).ready(function () {
             var userX = new user($('#fname').val(),$('#lname').val(),$('#email').val(), $('#pass').val());
             usersArray.push(userX);
             localStorage.setItem('user', JSON.stringify(usersArray));
+
+            signed_in = true;
+            var userSigned = new user_signed(userEmail, signed_in);
+            localStorage.setItem('user_signed', JSON.stringify(userSigned));
+            window.location.assign("quizes.html");
         }else{
             //case local storage already contains data
             //we loop the array contents to check if the email exists
@@ -55,9 +67,13 @@ $(document).ready(function () {
             }else{
                 //if false, then user isn`t stored before
                 //we add it in this case
+                signed_in = true;
+                var userSigned = new user_signed(userEmail, signed_in);
                 var userX = new user($('#fname').val(),$('#lname').val(),$('#email').val(), $('#pass').val());
                 usersArray.push(userX);
                 localStorage.setItem('user', JSON.stringify(usersArray));
+                localStorage.setItem('user_signed', JSON.stringify(userSigned));
+                window.location.assign("quizes.html");
             }
         }
         

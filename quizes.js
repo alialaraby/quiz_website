@@ -8,6 +8,7 @@ $(document).ready(function () {
     $('#l3').text(question.questions[0].a3);
 
     $('#check_ans').click(function () {
+
         if (document.getElementById('r1').checked) {
             if (document.getElementById('l1').innerText == question.questions[0].ca) {
                 alert('true')
@@ -43,11 +44,25 @@ $(document).ready(function () {
     }
 
 
-    //user class to create user instances from it
-    function user(email, password) {
-        this.email = email;
-        this.password = password;
+    //create users array 
+    var usersLogedinArray = [];
+    var userMail = '';
+    //check if the object in the local storage is already created 
+    //or this is the first time creating it(local storage is empty)
+    if (localStorage.getItem('user_signed') === null){
+        //case local storage is empty, leave the array empty
+        //this step is for avoiding 'array is null' exception
+    }else{
+        //case local storage already has the object, then 
+        //get all the values in it to add to it to get the previous values
+        usersLogedinArray = JSON.parse(localStorage.getItem('user_signed'));
+        userMail = usersLogedinArray.email;
     }
+
+    if (usersLogedinArray.signed) {
+        logUserIn(userMail)
+    }
+
 
     $('#login_btn').click(function () {
 
@@ -59,28 +74,31 @@ $(document).ready(function () {
                 //if we found the email already exists 
                 //set the variable to true and break the loop
                 found = true;
-                username = usersArray[index].fname + ' ' + usersArray[index].fname;
                 break;
             }
         }
         if (found) {
-            alert("user exists, you are logged in");
-            $('#exampleModal').modal('hide');
-            $('#nav_login_btn').css('display', 'none');
-            $('#nav_signup_btn').css('display', 'none');
-            $('#profile_btn').css('display', 'inline');
-            $('#profile_name').text(username);
-            $('.navbar .nav-item.home').css('margin-left', '845px');
+            logUserIn(userEmail)
         }else{
             alert('this email doesn`t exist, signup')
         }
     })
 })
+//this function is called to do the changes if the user is loggedin
+//profile is added and login/signup buttons are removed
+function logUserIn(mail) {
+    $('#exampleModal').modal('hide');
+    $('#nav_login_btn').css('display', 'none');
+    $('#nav_signup_btn').css('display', 'none');
+    $('#profile_btn').css('display', 'inline');
+    $('#profile_name').text(mail);
+    // $('.navbar .nav-item.home').css('margin-left', '845px');
+}
 
 
 text = '{ "questions" : [' +
     '{ "id":"1" , "q":"How many Bytes are stored by ‘Long’ Data type in C# .net?" ,' + 
-    ' "a1":" 8", "a2":" 4", "a3":" 2", "ca":" 8" },' +
+    ' "a1":"8", "a2":" 4", "a3":" 2", "ca":"8" },' +
 
     '{ "id":"2" , "q":"Choose “.NET class” name from which data type “UInt” is derived ?" ,' +
     '"a1":"System.Int16", "a2":"System.UInt32", "a3":"System.UInt64", "ca":"System.UInt64" },' +
