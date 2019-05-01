@@ -1,6 +1,25 @@
 
 $(document).ready(function () {
 
+    createdCardsArray = [];
+
+    if (localStorage.getItem('created_cards') === null){
+    }else{
+        //case local storage already has the object, then 
+        //get all the values in it to add to it to get the previous values
+        createdCardsArray = JSON.parse(localStorage.getItem('created_cards'));
+        console.log(createdCardsArray)
+        for(var i=0; i<createdCardsArray.length; i++){
+            var newQuizCard = document.createElement('div');
+            $(newQuizCard).attr('class', 'col-12 col-md-6 col-lg-3');
+            // console.log(createdCardsArray[i])
+            newQuizCard.innerHTML = createdCardsArray[i].cardVar;
+            $('#created_quiz_row').append(newQuizCard);
+            $('#card1.created_p:last-of-type').css('background-image', 'url('+ createdCardsArray[i].cardImgUrl +')')
+        }
+    }
+
+
     $('#sign_out').click(function () {
         logUserOut();
     })
@@ -14,7 +33,6 @@ $(document).ready(function () {
             $('.dropdown').dropdown('show');
             shown = true; 
         }
-        
     })
     
 
@@ -102,12 +120,21 @@ $(document).ready(function () {
     })
 
 
-    // $(window).resize(function(){
+    $('#create_quiz_btn').click(function () {
+        document.location.assign("quizes_page.html");
+    });
 
-    //     if ($(window).width() <= 1200) {  
-    //         $('#bas').css('display', 'none');
-    //         $('#sign_out_btn').css('display', 'inline');
-    // }});
+    /*start quiz buttons of the card */
+
+    //array of all start_quiz buttons
+    var startQuizBtns = $('.start_quiz');
+    $(startQuizBtns).click(function () {
+        if (usersLogedinArray.signed) {
+            alert('user is signed in go to quiz')
+        }else{
+            $('#exampleModal').modal('show');
+        }
+    })
 })
 //this function is called to do the changes if the user is loggedin
 //profile is added and login/signup buttons are removed
@@ -116,12 +143,12 @@ function logUserIn(mail) {
     $('#nav_login_btn').css('display', 'none');
     $('#nav_signup_btn').css('display', 'none');
     $('#bas').css('display', 'inline');
+    $('#nav_quiz_btn').css('display', 'inline');
     $('#profile_btn').css('display', 'inline');
     $('#profile_name').text(mail);
     usersLogedinArray.signed = true;
     usersLogedinArray.email = mail;
     localStorage.setItem('user_signed', JSON.stringify(usersLogedinArray));
-    // $('.navbar .nav-item.home').css('margin-left', '845px');
 }
 
 function logUserOut() {
@@ -129,10 +156,12 @@ function logUserOut() {
     $('#nav_signup_btn').css('display', 'inline');
     $('#profile_btn').css('display', 'none');
     $('#bas').css('display', 'none');
+    $('#nav_quiz_btn').css('display', 'none');
     usersLogedinArray.signed = false;
     localStorage.setItem('user_signed', JSON.stringify(usersLogedinArray));
     $('.dropdown').dropdown('hide');
     shown = false;
+    document.location.replace("quizes.html");
 }
 
 

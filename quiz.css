@@ -65,7 +65,31 @@ body{
 .bg-primary{
   background-color: #298E9E !important;
 }
-
+.three_dot{
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+.three_dot_menu:after {
+  content: '\2807';
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+.dropdown-toggle::after{
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+  border-left: 0px;
+}
+.btn.three_dot_menu{
+  padding: 0px 5px;
+}
+.navbar-expand-xl .navbar-nav .dropdown-menu{
+  margin-top: 50px;
+  margin-left: -122px;
+  /* width: 100px; */
+}
 @media only screen and (max-width: 1200px){
   .navbar{
       padding: 10px 40px;

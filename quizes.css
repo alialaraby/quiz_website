@@ -57,8 +57,11 @@
 }
 .navbar-expand-xl .navbar-nav .dropdown-menu{
     margin-top: 50px;
-    margin-left: -7px;
+    margin-left: -122px;
     /* width: 100px; */
+}
+.dropdown-menu{
+    min-width: 100%;
 }
 @media only screen and (max-width: 1200px){
     .navbar{
@@ -69,6 +72,15 @@
     }
     #vl{
         display: none;
+    }
+    .navbar-expand-xl .navbar-nav .dropdown-menu{
+        margin-left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+    #bas{
+        width: 50%;
+        margin: 0px auto;
     }
 }
 
@@ -120,7 +132,6 @@
     font-weight: 600;
     position: absolute;
     top: 420px;
-    margin: 0px 25%;
 }
 
 
@@ -185,4 +196,31 @@ form .form-group{
 }
 .modal-body #no_account_p{
     text-align: center;
+}
+
+/* create quiz div */
+#create_quiz_div{
+    cursor: pointer;
+    background-image: url('images/add.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 20%;
+    margin: 60px auto;
+    height: 140px;
+    transition: box-shadow 1s, background-color 1s;
+}
+#create_quiz_div:hover{
+    background-color: rgb(189, 189, 189);
+    box-shadow: 0px 0px 10px 5px rgb(189, 189, 189);
+}
+#create_p{
+    text-align: center;
+    font-size: 25pt;
+    font-weight: 800;
+    color: #298E9E;
+}
+
+#create_quiz_title{
+    margin: 10px 0px;
 }
