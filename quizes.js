@@ -1,6 +1,23 @@
 
 $(document).ready(function () {
 
+    $('#sign_out').click(function () {
+        logUserOut();
+    })
+
+    shown = false;
+    $('#bas').click(function () {
+        if (shown) {
+            $('.dropdown').dropdown('hide');
+            shown = false;    
+        }else{
+            $('.dropdown').dropdown('show');
+            shown = true; 
+        }
+        
+    })
+    
+
     var question = JSON.parse(text);
     $('#q1').text(question.questions[0].q);
     $('#l1').text(question.questions[0].a1);
@@ -45,8 +62,8 @@ $(document).ready(function () {
 
 
     //create users array 
-    var usersLogedinArray = [];
-    var userMail = '';
+    usersLogedinArray = [];
+    userMail = '';
     //check if the object in the local storage is already created 
     //or this is the first time creating it(local storage is empty)
     if (localStorage.getItem('user_signed') === null){
@@ -83,6 +100,14 @@ $(document).ready(function () {
             alert('this email doesn`t exist, signup')
         }
     })
+
+
+    // $(window).resize(function(){
+
+    //     if ($(window).width() <= 1200) {  
+    //         $('#bas').css('display', 'none');
+    //         $('#sign_out_btn').css('display', 'inline');
+    // }});
 })
 //this function is called to do the changes if the user is loggedin
 //profile is added and login/signup buttons are removed
@@ -90,9 +115,24 @@ function logUserIn(mail) {
     $('#exampleModal').modal('hide');
     $('#nav_login_btn').css('display', 'none');
     $('#nav_signup_btn').css('display', 'none');
+    $('#bas').css('display', 'inline');
     $('#profile_btn').css('display', 'inline');
     $('#profile_name').text(mail);
+    usersLogedinArray.signed = true;
+    usersLogedinArray.email = mail;
+    localStorage.setItem('user_signed', JSON.stringify(usersLogedinArray));
     // $('.navbar .nav-item.home').css('margin-left', '845px');
+}
+
+function logUserOut() {
+    $('#nav_login_btn').css('display', 'inline');
+    $('#nav_signup_btn').css('display', 'inline');
+    $('#profile_btn').css('display', 'none');
+    $('#bas').css('display', 'none');
+    usersLogedinArray.signed = false;
+    localStorage.setItem('user_signed', JSON.stringify(usersLogedinArray));
+    $('.dropdown').dropdown('hide');
+    shown = false;
 }
 
 
