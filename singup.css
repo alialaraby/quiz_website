@@ -162,3 +162,18 @@ p{
     height: 30px;
     border-left: 1px solid white;
 }
+
+/* 3 dots styling */
+.dropdown-toggle::after{
+    border: 0px;
+    padding-left: 3px;
+    content: "\2807";
+    font-size: 23px;
+    color: white;
+}
+.dropdown-menu{
+    top: 43px;
+    left: -88px;
+    width: 130px;
+    min-width: 0px;
+}

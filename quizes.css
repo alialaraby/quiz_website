@@ -10,7 +10,7 @@
     height: 40px;
     margin: 5px 10px 0px 10px;
 }
-.navbar .nav-item{
+.navbar .nav-item:not(.three_dot){
     width: 100px;
     transition: background-color 2s;
     text-align: center;
@@ -19,7 +19,12 @@
     margin: 0px 5px;
     font-family: "Black Han Sans";
 }
-.navbar .nav-item:hover{
+.navbar .nav-item.three_dot{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+.navbar .nav-item:hover:not(.three_dot){
     background-color: rgb(53, 97, 143);
     color: rgb(31, 26, 26);
     border: 0px;
@@ -161,4 +166,19 @@ form .form-group{
 }
 .modal-body #no_account{
     text-align: center;
+}
+
+/* 3 dots styling */
+.dropdown-toggle::after{
+    border: 0px;
+    padding-left: 3px;
+    content: "\2807";
+    font-size: 23px;
+    color: white;
+}
+.dropdown-menu{
+    top: 43px;
+    left: -88px;
+    width: 130px;
+    min-width: 0px;
 }
