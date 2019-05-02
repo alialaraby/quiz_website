@@ -182,3 +182,22 @@ form .form-group{
     width: 130px;
     min-width: 0px;
 }
+
+/* create quiz button */
+#create_p{
+    color: #298E9E;
+    font-size: 20pt;
+    font-weight: 800;
+    text-align: center;
+}
+#create_quiz_div{
+    width: 25%;
+    height: 130px;
+    margin: 10px auto;
+    background-image: url('images/add.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+#create_quiz_div:hover{
+    cursor: pointer;
+}
