@@ -1,6 +1,29 @@
 
 $(document).ready(function () {
 
+
+    //create users array 
+    var takenQuizesArray = [];
+    //check if the object in the local storage is already created 
+    //or this is the first time creating it(local storage is empty)
+    if (localStorage.getItem('taken_quizes') === null){
+        //case local storage is empty, leave the array empty
+        //this step is for avoiding 'array is null' exception
+    }else{
+        //case local storage already has the object, then 
+        //get all the values in it to add to it to get the previous values
+        takenQuizesArray = JSON.parse(localStorage.getItem('taken_quizes'))
+    }
+    //user class to store taken quizes
+    function quiz(loggedUserMail, btnId, quizName, grade, taken) {
+        this.loggedUserMail = loggedUserMail;
+        this.btnId = btnId;
+        this.quizName = quizName;
+        this.grade = grade;
+        this.taken = taken;
+    }
+
+
     createdCardsArray = [];
 
     if (localStorage.getItem('created_cards') === null){
@@ -66,7 +89,7 @@ $(document).ready(function () {
     })
 
     //create users array 
-    var usersArray = [];
+    usersArray = [];
     //check if the object in the local storage is already created 
     //or this is the first time creating it(local storage is empty)
     if (localStorage.getItem('user') === null){
@@ -94,8 +117,28 @@ $(document).ready(function () {
         userMail = usersLogedinArray.email;
     }
 
+    //check if the user is logged in 
     if (usersLogedinArray.signed) {
-        logUserIn(userMail)
+        //log the user in if he is logged in
+        logUserIn(userMail);
+        /*this part disables the quizes he took before*/
+        //get all the buttons of the quizes
+        var takenQuizesBtns = $('.start_quiz');
+        //loop over the taken quizes array
+        for(var i=0; i<takenQuizesArray.length; i++){
+            //find the current user to get the courses he took
+            if (takenQuizesArray[i].loggedUserMail == userMail) {
+                //loop over the buttons of quizes to disables the taken ones for this user
+                for (var index = 0; index < takenQuizesBtns.length; index++) {
+                    var itemId = $(takenQuizesBtns[index]).attr('id');
+                    if(takenQuizesArray[i].btnId == itemId){
+                        $(takenQuizesBtns[index]).prop('disabled', true);
+                    }
+                }
+            }
+        }
+    }else{
+        $('#bas').css('display', 'none');
     }
 
 
@@ -113,10 +156,11 @@ $(document).ready(function () {
             }
         }
         if (found) {
-            logUserIn(userEmail)
+            logUserIn(userEmail);
         }else{
             alert('this email doesn`t exist, signup')
         }
+       document.location.replace("quizes.html");
     })
 
 
@@ -130,7 +174,17 @@ $(document).ready(function () {
     var startQuizBtns = $('.start_quiz');
     $(startQuizBtns).click(function () {
         if (usersLogedinArray.signed) {
-            alert('user is signed in go to quiz')
+            var quizName = $(this).prev().prev().text();
+            for(var i=0; i<usersArray.length; i++){
+                if (usersArray[i].email == userMail) {
+                    var quizName = $(this).prev().prev().text();
+                    var takenQuiz = new quiz(userMail, $(this).attr('id'), quizName, 50, true);
+                    takenQuizesArray.push(takenQuiz);
+                    $(this).prop('disabled', true);
+                    localStorage.setItem('taken_quizes', JSON.stringify(takenQuizesArray));
+                    document.location.assign('quiz.html');
+                }
+            }
         }else{
             $('#exampleModal').modal('show');
         }
@@ -155,7 +209,6 @@ function logUserOut() {
     $('#nav_login_btn').css('display', 'inline');
     $('#nav_signup_btn').css('display', 'inline');
     $('#profile_btn').css('display', 'none');
-    $('#bas').css('display', 'none');
     $('#nav_quiz_btn').css('display', 'none');
     usersLogedinArray.signed = false;
     localStorage.setItem('user_signed', JSON.stringify(usersLogedinArray));

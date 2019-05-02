@@ -21,7 +21,6 @@ $(document).ready(function () {
     //     }
     // }
 
-
     $('#create_quiz_div').click(function() {
         $('#exampleModal').modal('show');
     })
@@ -44,7 +43,7 @@ $(document).ready(function () {
         "<div class='card-body'>" + 
             "<h5 class='card-title'>"+ createdCardTitle +"</h5>" + 
             "<p class='card-text'>"+ createdCardDesc +" , you have 5 minutes to finish the exam.</p>"+
-            "<a id='c_quiz_btn_start' href='#' class='btn btn-primary start_quiz'>Start Quiz</a></div></div>";
+            "<input id='"+ createdCardTitle +"_quiz_btn_start' type='button' class='btn btn-primary start_quiz' value='Start Quiz'></div></div>";
 
         var nodeTxt = newQuizCard.innerHTML;
         var newCard = new createdCards(nodeTxt, imgUrl);
