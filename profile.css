@@ -1,0 +1,105 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #ECE7E7;
+}
+.mycontiner{
+    margin-top: 130px;
+}
+#name,#email,#grade {
+    color: #298E9E;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    min-height: 50px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid #298E9E;
+    border-radius: 5px;
+}
+.mycont{
+    padding: 10px;
+    margin: 10px;
+}
+.mycont i{
+    padding: 0px 5px;
+    width: 40px;
+}
+#grade{
+    margin-top: 10PX;
+}
+.mybtn{
+background-color: white;
+color: black;
+}
+
+
+/* collapse styling */
+#collapsediv{
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid #298E9E;
+    border-radius: 5px;
+    color: #298E9E;
+    transition: background-color 1s, border-color 1s, color 1s;
+}
+#collapsediv:hover{
+     background-color: #298E9E;
+     border-color: white;
+     color: white;
+}
+#collapseExample{
+    border: 2px solid #298E9E;
+    border-radius: 5px;
+    color: #298E9E;
+    font-weight: 600;
+}
+.list-group-item{
+    border: 2px solid #298E9E;
+    border-radius: 5px;
+    margin: 5px 0px;
+}
+
+
+
+/* footer style*/
+
+.footer{
+    background-color: transparent;
+    min-height: 70px;
+    color: #298E9E;
+    position: relative;
+    bottom: -95px;
+}
+.footer hr{
+    width: 100%;
+    height: 1px;
+    background-color: #298E9E;
+}
+.footer i:not(.far){
+    font-size: 25pt;
+    margin: 0px 12px;
+    /* color: white */
+}
+.far{
+    margin: 6px 0px;
+}
+
+.copy_rights{
+    min-height: 50px;
+    color: #298E9E;
+}
+.copy_rights span{
+    margin: 0px 10px;
+}
+#developed_by{
+    height: 30px;
+    border-left: 1px solid #298E9E;
+}
