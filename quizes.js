@@ -216,8 +216,6 @@ function logUserOut() {
     shown = false;
     document.location.replace("quizes.html");
 }
-
-
 text = '{ "questions" : [' +
     '{ "id":"1" , "q":"How many Bytes are stored by ‘Long’ Data type in C# .net?" ,' + 
     ' "a1":"8", "a2":" 4", "a3":" 2", "ca":"8" },' +
