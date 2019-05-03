@@ -1,19 +1,22 @@
+function checkItemInLocalStorage(key) {
+    var arrayToCheck = [];
 
-$(document).ready(function () {
-
-
-    //create users array 
-    var takenQuizesArray = [];
-    //check if the object in the local storage is already created 
-    //or this is the first time creating it(local storage is empty)
-    if (localStorage.getItem('taken_quizes') === null){
+    if (localStorage.getItem(key) === null){
         //case local storage is empty, leave the array empty
         //this step is for avoiding 'array is null' exception
     }else{
         //case local storage already has the object, then 
         //get all the values in it to add to it to get the previous values
-        takenQuizesArray = JSON.parse(localStorage.getItem('taken_quizes'))
-    }
+        arrayToCheck = JSON.parse(localStorage.getItem(key))
+    }    
+    return arrayToCheck;
+}
+$(document).ready(function () {
+
+
+    //create users array 
+    var takenQuizesArray = checkItemInLocalStorage('taken_quizes');
+    
     //user class to store taken quizes
     function quiz(loggedUserMail, btnId, quizName, grade, taken) {
         this.loggedUserMail = loggedUserMail;
@@ -89,19 +92,8 @@ $(document).ready(function () {
     })
 
     //create users array 
-    usersArray = [];
-    //check if the object in the local storage is already created 
-    //or this is the first time creating it(local storage is empty)
-    if (localStorage.getItem('user') === null){
-        //case local storage is empty, leave the array empty
-        //this step is for avoiding 'array is null' exception
-    }else{
-        //case local storage already has the object, then 
-        //get all the values in it to add to it to get the previous values
-        usersArray = JSON.parse(localStorage.getItem('user'))
-    }
-
-
+    usersArray = checkItemInLocalStorage('user');
+    
     //create users array 
     usersLogedinArray = [];
     userMail = '';
@@ -216,6 +208,7 @@ function logUserOut() {
     shown = false;
     document.location.replace("quizes.html");
 }
+
 text = '{ "questions" : [' +
     '{ "id":"1" , "q":"How many Bytes are stored by ‘Long’ Data type in C# .net?" ,' + 
     ' "a1":"8", "a2":" 4", "a3":" 2", "ca":"8" },' +
