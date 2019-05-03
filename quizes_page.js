@@ -1,9 +1,11 @@
 $(document).ready(function () {
 
     // createdCardsArray = [];
-    function createdCards(cardVar, cardImgUrl) {
+    function createdCards(cardVar, cardImgUrl, quizTitle, quizAns) {
         this.cardVar = cardVar;
         this.cardImgUrl = cardImgUrl;
+        this.quizTitle = quizTitle;
+        this.quizAns = quizAns;
     }
 
     // if (localStorage.getItem('created_cards') === null){
@@ -24,10 +26,10 @@ $(document).ready(function () {
     $('#create_quiz_div').click(function() {
         $('#exampleModal').modal('show');
     })
-
-    var file = document.getElementById('fileItem').files[0];
-    imgUrl = "images/" + file.name;
     $('#upload').click(function () {
+        var fileImage = document.getElementById('fileItemImage').files[0];
+        imgUrl = "images/" + fileImage.name;
+        quizAns = $('#quiz_ans').val();
         $('.quiz_card_img').css('background-image', 'url('+ imgUrl +')')
     })
 
@@ -46,7 +48,7 @@ $(document).ready(function () {
             "<input id='"+ createdCardTitle +"_quiz_btn_start' type='button' class='btn btn-primary start_quiz' value='Start Quiz'></div></div>";
 
         var nodeTxt = newQuizCard.innerHTML;
-        var newCard = new createdCards(nodeTxt, imgUrl);
+        var newCard = new createdCards(nodeTxt, imgUrl, createdCardTitle, quizAns);
         createdCardsArray.push(newCard);
         localStorage.setItem('created_cards', JSON.stringify(createdCardsArray));
         $('#exampleModal').modal('hide');

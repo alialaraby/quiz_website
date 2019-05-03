@@ -1,95 +1,125 @@
 $(document).ready(function () {
 
+    createdCardsArray = [];
+    if (localStorage.getItem('created_cards') === null){
+    }else{
+        //case local storage already has the object, then 
+        //get all the values in it to add to it to get the previous values
+        createdCardsArray = JSON.parse(localStorage.getItem('created_cards'));
+    }
+    
+    var item = localStorage.getItem('current_quiz');
+    var corname = "";
+    if (item == "HTML5") {
+        corname = item;
+    }else if (item == "C#") {
+        corname = item;
+    }else if (item == "MS SQL Server") {
+        corname = item;
+    }else{
+        for(var i=0; i<createdCardsArray.length; i++){
+            if (createdCardsArray[i].quizTitle == item) {
 
-    var corname = "html5";
+                corname = item;
+
+                var title = corname + ".json";
+                var ans = createdCardsArray[i].quizAns + ".json";
+                $.getJSON( title, function( json ) {
+                    arr1 = json;
+                });
+                $.getJSON( ans, function( json ) {
+                    arr2 = json;
+                });                
+            }
+        }
+    }
+    
+
+    
+//     if (corname == "javascript") {
+//         alert("javascript")
+//         //#region  java script
+//         var questions = {
+//             "status": [[
+//                 "The behaviour of the instances present of a class inside a method is defined by ",
+//                 " The keyword or the property that you use to refer to an object through which they were invoked is",
+//                 "The basic difference between JavaScript and Java is",
+//                 "The meaning for Augmenting classes is that:",
+//                 "The property of JSON() method is:",
+//                 "When a class B can extend another class A, we say that:",
+//                 "If A is the superclass and B is the subclass, then subclass inheriting the superclass can be represented as",
+//                 "The method that can be used to create new properties and also to modify the attributes of existing properties is",
+//                 "The Crockford’s subset does not include which function in JavaScript?",
+//                 "What does javascript use instead of == and !=?",
 
 
-    if (corname == "javascript") {
-        alert("javascript")
-        //#region  java script
-        var questions = {
-            "status": [[
-                "The behaviour of the instances present of a class inside a method is defined by ",
-                " The keyword or the property that you use to refer to an object through which they were invoked is",
-                "The basic difference between JavaScript and Java is",
-                "The meaning for Augmenting classes is that:",
-                "The property of JSON() method is:",
-                "When a class B can extend another class A, we say that:",
-                "If A is the superclass and B is the subclass, then subclass inheriting the superclass can be represented as",
-                "The method that can be used to create new properties and also to modify the attributes of existing properties is",
-                "The Crockford’s subset does not include which function in JavaScript?",
-                "What does javascript use instead of == and !=?",
-
-
-                " What is being imposed on each subset to ensure that it conforms to the subset?",
-                "Why was “The Good Parts” designed as a language subset in JavaScript?",
-                " Which is the subset that is a secure container designed for the purpose of safely running untrusted JavaScript?",
-                "Why is this keyword not preferred in JavaScript?",
-                "Which are the two functions that are not allowed in any secure subset?",
-                " Which is the object that defines methods that allow complete control over page content?",
-                "Which was one of the first security subsets proposed?",
-                "Which is the subset that transforms web content into secure modules that can be safely hosted on a web page?",
-                "The four kinds of class members are",
-                " Different kinds of object involved in a class definition are",
+//                 " What is being imposed on each subset to ensure that it conforms to the subset?",
+//                 "Why was “The Good Parts” designed as a language subset in JavaScript?",
+//                 " Which is the subset that is a secure container designed for the purpose of safely running untrusted JavaScript?",
+//                 "Why is this keyword not preferred in JavaScript?",
+//                 "Which are the two functions that are not allowed in any secure subset?",
+//                 " Which is the object that defines methods that allow complete control over page content?",
+//                 "Which was one of the first security subsets proposed?",
+//                 "Which is the subset that transforms web content into secure modules that can be safely hosted on a web page?",
+//                 "The four kinds of class members are",
+//                 " Different kinds of object involved in a class definition are",
                 
-                "The object whose properties are inherited by all instances of the class, and properties whose values are functions behaving like instance methods of the class, is",
-                "Which variables are used internally in object methods and are also globally visible?",
-                "The class that represents the regular expressions is",
-                "How can we make methods available on all objects?",
-                "What is the procedure to add methods to HTMLElement so that they will be inherited by the objects that represent the HTML tags in the current document?",
-                " You can refresh the webpage in JavaScript by using",
-                " The let keyword can be used",
-                "The main difference between the variables declared with var and with let is",
-                "Which looping statement allows XML tags to appear in JavaScript programs and adds API for operating on XML data?",
-                "which method of the iterable object returns an iterator object for the collection"
+//                 "The object whose properties are inherited by all instances of the class, and properties whose values are functions behaving like instance methods of the class, is",
+//                 "Which variables are used internally in object methods and are also globally visible?",
+//                 "The class that represents the regular expressions is",
+//                 "How can we make methods available on all objects?",
+//                 "What is the procedure to add methods to HTMLElement so that they will be inherited by the objects that represent the HTML tags in the current document?",
+//                 " You can refresh the webpage in JavaScript by using",
+//                 " The let keyword can be used",
+//                 "The main difference between the variables declared with var and with let is",
+//                 "Which looping statement allows XML tags to appear in JavaScript programs and adds API for operating on XML data?",
+//                 "which method of the iterable object returns an iterator object for the collection"
 
-]]
-        }
+// ]]
+//         }
 
-        var answers = {
-            "ans": [
-            ["method", "classes", "interfaces"],
-            ["from", "to", "this"],
-            ["no differnce", "function are considered as fields", "function are values , and there is no hard distinction between methods and fields"],
-            ["object inhert prototype properties even in dynamic state", "objects inherit prototype proprties in static state", "object doesnt inhert"],
-            ["in can be innvoked as object.JSON()", "it will automatically invoked by compiler", "it will automatically invoked by JSON.stringfy() method"],
-            ["A is the superclass and B is the subclass", "B is the superclass and A is the subclass", "both A and B are the superclass"],
-            ["B= inherit (A)", "B= A.inherit()", "B.prototype=inherit(A)"],
-            ["object.defineProperty()", "object.defineProperties()", "both (a) and (b)"],
-            ["eval()", "coeval()", "equal"],
-            ["it uses bitwise checking", "it uses === and !== instead", "it uses equals () and notequals() instead"],
-
-
-            ["A parser to parse the code", "A parser that parses and adds to the subset", "A static verifier that parses code"],
-            ["to improve programmer flexibality", "to balance the workload", "to improve programmer productivity"],
-            ["Sandbox", "The Good parts", "Both (a) and (b)"],
-            ["highly memory consuming", "Functions should access the global objects", "Functions should not access the global objects"],
-            ["evaluate() and restict()", "eval() and function constractor", "debugger() and test()"],
-            ["the clint-side document object", "the server side document object", "both (a) and (b)"],
-            ["FBJS", "Caja", "ADsafe"],
-            ["ADsafe", "Caja", "dojox.secure"],
-            ["instance method ,instance field , static method, dynamic method","instance fields ,instance method,class fields ,class method", "global method ,instance field , static method, dynamic method"],
-            ["public,private ,protected", "constractor ,function , destractor", "constractor object ,prototype object,instance object"],
-
-            ["instance object", "constractor object", "prototype object"],
-            ["object properties", "variable properties", "method properties"],
-            ["RegEXpObj", "RegExpclass", "RegExp"],
-            ["Object.add(methods)", "Object.method(add)", "Object.prototype"],
-            ["HTMLElement.prototype()", "HTMLElement.prototype", "HTML.addmethods()"],
-            ["Window.reload", "location.reload", "Window.refresh"],
-            ["as a substitute of var", "as a block statment to define new variable", "all of these"],
-            ["var is paricular function", "let is confined to a particular function but var is not", "var defines values based on conditions but let does not"],
-            ["for loop", "while loop", "for/each loop"],
-            ["iterator()", "_iterator_()", "_iteration_()"],
-
-         
-
-            ]
-        }
-        //#endregion
+//         var answers = {
+//             "ans": [
+//             ["method", "classes", "interfaces"],
+//             ["from", "to", "this"],
+//             ["no differnce", "function are considered as fields", "function are values , and there is no hard distinction between methods and fields"],
+//             ["object inhert prototype properties even in dynamic state", "objects inherit prototype proprties in static state", "object doesnt inhert"],
+//             ["in can be innvoked as object.JSON()", "it will automatically invoked by compiler", "it will automatically invoked by JSON.stringfy() method"],
+//             ["A is the superclass and B is the subclass", "B is the superclass and A is the subclass", "both A and B are the superclass"],
+//             ["B= inherit (A)", "B= A.inherit()", "B.prototype=inherit(A)"],
+//             ["object.defineProperty()", "object.defineProperties()", "both (a) and (b)"],
+//             ["eval()", "coeval()", "equal"],
+//             ["it uses bitwise checking", "it uses === and !== instead", "it uses equals () and notequals() instead"],
 
 
-    } else if (corname == "html5") {
+//             ["A parser to parse the code", "A parser that parses and adds to the subset", "A static verifier that parses code"],
+//             ["to improve programmer flexibality", "to balance the workload", "to improve programmer productivity"],
+//             ["Sandbox", "The Good parts", "Both (a) and (b)"],
+//             ["highly memory consuming", "Functions should access the global objects", "Functions should not access the global objects"],
+//             ["evaluate() and restict()", "eval() and function constractor", "debugger() and test()"],
+//             ["the clint-side document object", "the server side document object", "both (a) and (b)"],
+//             ["FBJS", "Caja", "ADsafe"],
+//             ["ADsafe", "Caja", "dojox.secure"],
+//             ["instance method ,instance field , static method, dynamic method","instance fields ,instance method,class fields ,class method", "global method ,instance field , static method, dynamic method"],
+//             ["public,private ,protected", "constractor ,function , destractor", "constractor object ,prototype object,instance object"],
+
+//             ["instance object", "constractor object", "prototype object"],
+//             ["object properties", "variable properties", "method properties"],
+//             ["RegEXpObj", "RegExpclass", "RegExp"],
+//             ["Object.add(methods)", "Object.method(add)", "Object.prototype"],
+//             ["HTMLElement.prototype()", "HTMLElement.prototype", "HTML.addmethods()"],
+//             ["Window.reload", "location.reload", "Window.refresh"],
+//             ["as a substitute of var", "as a block statment to define new variable", "all of these"],
+//             ["var is paricular function", "let is confined to a particular function but var is not", "var defines values based on conditions but let does not"],
+//             ["for loop", "while loop", "for/each loop"],
+//             ["iterator()", "_iterator_()", "_iteration_()"]
+//             ]
+//         }
+//         //#endregion
+
+
+//     } else 
+    if (corname == "HTML5") {
         alert("html5")
         //#region html5
 
@@ -177,7 +207,7 @@ $(document).ready(function () {
         //#endregion
 
 
-    } else if (corname == "c") {
+    } else if (corname == "C#") {
         alert("c")
         //#region c#
         var questions = {
@@ -260,7 +290,7 @@ $(document).ready(function () {
         }
         //#endregion
 
-    } else if (corname == "sql") {
+    } else if (corname == "MS SQL Server") {
         alert("sql")
         //#region sql
         var questions = {
@@ -344,10 +374,37 @@ $(document).ready(function () {
         }
         //#endregion
 
-    } else {
-        alert("something wrong")
+    }
+    // else if (corname == "javascript") {
+    //     alert("press ok when you are ready, js")
+        
+    //     for(var i=0; i<createdCardsArray.length; i++){
+    //         if (createdCardsArray[i].quizTitle == corname) {
+    //             var title = corname + ".json";
+    //             var ans = createdCardsArray[i].quizAns + ".json";
+    //             $.getJSON( title, function( json ) {
+    //                 arr1 = json;
+    //             });
+    //             $.getJSON( ans, function( json ) {
+    //                 arr2 = json;
+    //             });
+    //         }
+    //     }
+    //     var questions = arr1;
+    //     console.log(questions);
+    //     var answers = arr2;
+    // }
+     else {
+        var questions = arr1;
+        console.log(questions);
+        var answers = arr2;
 
     }
+
+
+
+
+
 
     //#region 
 

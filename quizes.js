@@ -109,6 +109,10 @@ $(document).ready(function () {
         userMail = usersLogedinArray.email;
     }
 
+    function qq(qname) {
+        this.qname = qname;
+    }
+
     //check if the user is logged in 
     if (usersLogedinArray.signed) {
         //log the user in if he is logged in
@@ -174,6 +178,7 @@ $(document).ready(function () {
                     takenQuizesArray.push(takenQuiz);
                     $(this).prop('disabled', true);
                     localStorage.setItem('taken_quizes', JSON.stringify(takenQuizesArray));
+                    localStorage.setItem('current_quiz', quizName);
                     document.location.assign('quiz.html');
                 }
             }

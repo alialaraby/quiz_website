@@ -48,9 +48,7 @@
             </nav>
         </div>
     </div>
-    
-
-       
+      
     <div class="container-fluid cards_section" style="margin-top: 100px;background-color: #CECDCD;">
         <div class="row px-4">
             <div class="col-12 col-md-6 col-lg-3">
@@ -118,9 +116,11 @@
             <div class="modal-body">
                 <div class="card" style="height: 500px">
                     <p class="card_img quiz_card_img" id="card1"></p>
-                    <input id="fileItem" type="file" style="display: inline;"><button style="width: 150px" id="upload">Use Image</button>
+                    <input id="fileItemImage" type="file" style="display: inline;">
+                    <input id="quiz_ans" class="form-control" type="text" placeholder="Enter name of Quiz answers json file">
+                    <button style="width: 150px" id="upload">Use Image</button>
                     <div class="card-body">
-                        <input id="create_quiz_title" class="form-control" type="text" placeholder="Enter Quiz Title">
+                        <input id="create_quiz_title" class="form-control" type="text" placeholder="Quiz Title, MUST be same as quiz json file name">
                         <textarea id="create_quiz_desc" class="form-control" id="validationTextarea" placeholder="Enter Short Description"></textarea>
                     </div>
                 </div>
