@@ -204,6 +204,45 @@ $(document).ready(function () {
            
         }
 
+        var correct = {
+            "cor": [
+                ["hyper text markup language"],
+                ["p"],
+                ["dl"],
+                ["h1"],
+                ["both"],
+                ["how to display the page"],
+                ["clint-server"],
+                ["empty elements are elements with no data"],
+                ["maxlength"],
+                ["html"],
+
+                ["SGML"],
+                ["both"],
+                ["REL"],
+                ["full paragraph"],
+                ["a system that cosists of code"],
+                ["DL"],
+                ["<td align =left"],
+                ["CAPTION"],
+                ["HEAD"],
+                ["a href=url target =_blank"],
+
+
+                ["BASE element"],
+                ["Ll"],
+                ["both are same"],
+                ["default"],
+                ["OL"],
+                ["format tag"],
+                ["BIN"],
+                ["SGML"],
+                ["A"],
+                ["PRE"]
+
+
+            ]
+        }
         //#endregion
 
 
@@ -285,6 +324,46 @@ $(document).ready(function () {
             ["Abstract Method", "instance Method", "sealed method"],
             ["Data hiding", "Encapsulation", "information hiding"],
             ["Commutative", "Associative", "Transitive"],
+
+            ]
+        }
+
+        var correct = {
+            "cor": [
+
+                ["java virtual machine "],
+                ["mscoree.dll"],
+                ["simple object access protocol"],
+                ["c#"],
+                ["method"],
+                ["main()"],
+                ["variable"],
+                ["Keywords"],
+                ["class type"],
+                ["ternary operator"],
+
+                ["left-associative"],
+                ["operator"],
+                ["label"],
+                ["conditional"],
+                ["continue"],
+                ["Array"],
+                ["Reference"],
+                ["Rectangle"],
+                ["Output"],
+                ["paranthesis"],
+
+
+                ["Local"],
+                ["parameter-less"],
+                ["Different"],
+                ["private"],
+                ["copy constractor"],
+                ["Method overloading"],
+                ["Accessor"],
+                ["Abstract Method"],
+                ["Encapsulation"],
+                ["Transitive"],
 
             ]
         }
@@ -372,6 +451,46 @@ $(document).ready(function () {
 
             ]
         }
+
+        var correct = {
+            "cor": [
+
+                ["Truncate"],
+                ["Quary language"],
+                ["DML"],
+                ["Modify"],
+                ["Look-up"],
+                ["Grant"],
+                ["Max"],
+                ["Add user to database"],
+                ["Insert"],
+                ["DCL"],
+
+                ["alter"],
+                ["mean"],
+                ["full outer join"],
+                ["distribution"],
+                ["Group"],
+                ["AVG"],
+                ["QL"],
+                ["None of these"],
+                ["either (a) or (b)"],
+                ["While statment"],
+
+
+                ["Aggregation"],
+                ["An alternate name given to an inner query"],
+                ["applying a select and a project first"],
+                ["Alter"],
+                ["Non-procedure DMLs"],
+                ["Row Level"],
+                ["Database catalog"],
+                ["RETRIEVE"],
+                ["Oter join"],
+                ["Count"]
+
+            ]
+        }
         //#endregion
 
     }
@@ -401,7 +520,58 @@ $(document).ready(function () {
 
     }
 
+    //#region timer
+    countdowndate = (new Date().getTime()) + 5 * 60000;
+    distance = 0;
 
+
+    var interval = null;
+    interval = setInterval(updateDiv, 1000);
+
+    function updateDiv() {
+        var now = new Date().getTime();
+        distance = countdowndate - now;
+        var minuts = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("timer").innerHTML = minuts + "m " + seconds + "s ";
+        if (minuts == 0 && seconds == 0) {
+            //alert("time finish")
+            clearInterval(interval);
+            document.getElementById("rad1").disabled = true;
+            document.getElementById("rad2").disabled = true;
+            document.getElementById("rad3").disabled = true;
+            document.getElementById("rad4").disabled = true;
+            document.getElementById("rad5").disabled = true;
+            document.getElementById("rad6").disabled = true;
+            document.getElementById("rad7").disabled = true;
+            document.getElementById("rad8").disabled = true;
+            document.getElementById("rad9").disabled = true;
+            document.getElementById("rad10").disabled = true;
+            document.getElementById("rad11").disabled = true;
+            document.getElementById("rad12").disabled = true;
+            document.getElementById("rad13").disabled = true;
+            document.getElementById("rad14").disabled = true;
+            document.getElementById("rad15").disabled = true;
+            document.getElementById("rad16").disabled = true;
+            document.getElementById("rad17").disabled = true;
+            document.getElementById("rad18").disabled = true;
+            document.getElementById("rad19").disabled = true;
+            document.getElementById("rad20").disabled = true;
+            document.getElementById("rad21").disabled = true;
+            document.getElementById("rad22").disabled = true;
+            document.getElementById("rad23").disabled = true;
+            document.getElementById("rad24").disabled = true;
+            document.getElementById("rad25").disabled = true;
+            document.getElementById("rad26").disabled = true;
+            document.getElementById("rad27").disabled = true;
+            document.getElementById("rad28").disabled = true;
+            document.getElementById("rad29").disabled = true;
+            document.getElementById("rad30").disabled = true;
+
+
+        }
+
+    }
 
 
 
@@ -558,5 +728,592 @@ console.log(init);
     lab103.innerHTML = answers.ans[ten][2];
 
     //#endregion
+
+    document.getElementById("sub").onclick = function () {
+        //alert("fkl");
+
+
+
+        var ans1 = correct.cor[one][0];
+        var ans2 = correct.cor[two][0];
+        var ans3 = correct.cor[three][0];
+        var ans4 = correct.cor[four][0];
+        var ans5 = correct.cor[five][0];
+        var ans6 = correct.cor[six][0];
+        var ans7 = correct.cor[seven][0];
+        var ans8 = correct.cor[eight][0];
+        var ans9 = correct.cor[nine][0];
+        var ans10 = correct.cor[ten][0];
+
+
+        var count = 0;
+
+        //first question
+        if (document.getElementById("rad1").checked == true) {
+            var question1 = document.getElementById("ques11").innerHTML;
+            if (question1 == ans1) {
+                count++;
+                $("#ques11").css('backgroundColor', 'green');
+
+            } else {
+                $("#ques11").css('backgroundColor', 'red');
+            }
+            $("#ques11").css('color', 'white');
+
+        } else if (document.getElementById("rad2").checked == true) {
+            var question1 = document.getElementById("ques12").innerHTML;
+            if (question1 == ans1) {
+                count++;
+                $("#ques12").css('backgroundColor', 'green');
+            } else {
+                $("#ques12").css('backgroundColor', 'red');
+            }
+            $("#ques12").css('color', 'white');
+
+        } else if (document.getElementById("rad3").checked == true) {
+            var question1 = (document.getElementById("ques13").innerHTML);
+            if (question1 == ans1) {
+                count++;
+                $("#ques13").css('backgroundColor', 'green');
+            } else {
+                $("#ques13").css('backgroundColor', 'red');
+            }
+            $("#ques13").css('color', 'white');
+
+        } else {
+            var question1 = ("null");
+
+        }
+
+        //second question
+        if (document.getElementById("rad4").checked == true) {
+            var question2 = (document.getElementById("ques21").innerHTML);
+            if (question2 == ans2) {
+                count++;
+                $("#ques21").css('backgroundColor', 'green');
+            } else {
+                $("#ques21").css('backgroundColor', 'red');
+            }
+            $("#ques21").css('color', 'white');
+
+        } else if (document.getElementById("rad5").checked == true) {
+            var question2 = (document.getElementById("ques22").innerHTML);
+            if (question2 == ans2) {
+                count++;
+                $("#ques22").css('backgroundColor', 'green');
+            } else {
+                $("#ques22").css('backgroundColor', 'red');
+            }
+            $("#ques22").css('color', 'white');
+            
+        } else if (document.getElementById("rad6").checked == true) {
+            var question2 = (document.getElementById("ques23").innerHTML);
+            if (question2 == ans2) {
+                count++;
+                $("#ques23").css('backgroundColor', 'green');
+            } else {
+                $("#ques23").css('backgroundColor', 'red');
+
+            }
+            $("#ques23").css('color', 'white');
+
+        } else {
+            var question2 = ("null");
+        }
+
+
+
+        //third question
+        if (document.getElementById("rad7").checked == true) {
+            var question3 = (document.getElementById("ques31").innerHTML);
+            if (question3 == ans3) {
+                count++;
+                $("#ques31").css('backgroundColor', 'green');
+            } else {
+                $("#ques31").css('backgroundColor', 'red');
+
+            }
+            $("#ques31").css('color', 'white');
+
+        } else if (document.getElementById("rad8").checked == true) {
+            var question3 = (document.getElementById("ques32").innerHTML);
+            if (question3 == ans3) {
+                count++;
+                $("#ques32").css('backgroundColor', 'green');
+            } else {
+                $("#ques32").css('backgroundColor', 'red');
+
+            }
+            $("#ques32").css('color', 'white');
+
+        } else if (document.getElementById("rad9").checked == true) {
+            var question3 = (document.getElementById("ques33").innerHTML);
+            if (question3 == ans3) {
+                count++;
+                $("#ques33").css('backgroundColor', 'green');
+            } else {
+                $("#ques33").css('backgroundColor', 'red');
+
+            }
+            $("#ques33").css('color', 'white');
+
+        } else {
+            var question3 = ("null");
+        }
+
+
+
+
+
+        //forth question
+        if (document.getElementById("rad10").checked == true) {
+            var question4 = (document.getElementById("ques41").innerHTML);
+
+            if (question4 == ans4) {
+                count++;
+                $("#ques41").css('backgroundColor', 'green');
+            } else {
+                $("#ques41").css('backgroundColor', 'red');
+
+            }
+            $("#ques41").css('color', 'white');
+
+        } else if (document.getElementById("rad11").checked == true) {
+            var question4 = (document.getElementById("ques42").innerHTML);
+
+            if (question4 == ans4) {
+                count++;
+                $("#ques42").css('backgroundColor', 'green');
+            } else {
+                $("#ques42").css('backgroundColor', 'red');
+
+            }
+            $("#ques42").css('color', 'white');
+
+        } else if (document.getElementById("rad12").checked == true) {
+            var question4 = (document.getElementById("ques43").innerHTML);
+
+            if (question4 == ans4) {
+                count++;
+                $("#ques43").css('backgroundColor', 'green');
+            } else {
+                $("#ques43").css('backgroundColor', 'red');
+
+            }
+            $("#ques43").css('color', 'white');
+
+        } else {
+            var question4 = ("null");
+        }
+
+
+        //fifth question
+        if (document.getElementById("rad13").checked == true) {
+            var question5 = (document.getElementById("ques51").innerHTML);
+
+            if (question5 == ans5) {
+                count++;
+                $("#ques51").css('backgroundColor', 'green');
+            } else {
+                $("#ques51").css('backgroundColor', 'red');
+
+            }
+            $("#ques51").css('color', 'white');
+
+        } else if (document.getElementById("rad14").checked == true) {
+            var question5 = (document.getElementById("ques52").innerHTML);
+
+            if (question5 == ans5) {
+                count++;
+                $("#ques52").css('backgroundColor', 'green');
+            } else {
+                $("#ques52").css('backgroundColor', 'red');
+
+            }
+            $("#ques52").css('color', 'white');
+
+        } else if (document.getElementById("rad15").checked == true) {
+            var question5 = (document.getElementById("ques53").innerHTML);
+
+            if (question5 == ans5) {
+                count++;
+                $("#ques53").css('backgroundColor', 'green');
+            } else {
+                $("#ques53").css('backgroundColor', 'red');
+
+            }
+            $("#ques53").css('color', 'white');
+
+        } else {
+            var question5 = ("null");
+        }
+
+
+        //sixth question
+        if (document.getElementById("rad16").checked == true) {
+            var question6 = (document.getElementById("ques61").innerHTML);
+            if (question6 == ans6) {
+                count++;
+                $("#ques61").css('backgroundColor', 'green');
+            } else {
+                $("#ques61").css('backgroundColor', 'red');
+
+            }
+            $("#ques61").css('color', 'white');
+
+        } else if (document.getElementById("rad17").checked == true) {
+            var question6 = (document.getElementById("ques62").innerHTML);
+            if (question6 == ans6) {
+                count++;
+                $("#ques62").css('backgroundColor', 'green');
+            } else {
+                $("#ques62").css('backgroundColor', 'red');
+
+            }
+            $("#ques62").css('color', 'white');
+
+        } else if (document.getElementById("rad18").checked == true) {
+            var question6 = (document.getElementById("ques63").innerHTML);
+            if (question6 == ans6) {
+                count++;
+                $("#ques63").css('backgroundColor', 'green');
+            } else {
+                $("#ques63").css('backgroundColor', 'red');
+
+            }
+            $("#ques63").css('color', 'white');
+
+        } else {
+            var question6 = ("null");
+        }
+
+
+        //seventh question
+        if (document.getElementById("rad19").checked == true) {
+            var question7 = (document.getElementById("ques71").innerHTML);
+            if (question7 == ans7) {
+                count++;
+                $("#ques71").css('backgroundColor', 'green');
+            } else {
+                $("#ques71").css('backgroundColor', 'red');
+            }
+            $("#ques71").css('color', 'white');
+
+        } else if (document.getElementById("rad20").checked == true) {
+            var question7 = (document.getElementById("ques72").innerHTML);
+            if (question7 == ans7) {
+                count++;
+                $("#ques72").css('backgroundColor', 'green');
+            } else {
+                $("#ques72").css('backgroundColor', 'red');
+            }
+            $("#ques72").css('color', 'white');
+
+        } else if (document.getElementById("rad21").checked == true) {
+            var question7 = (document.getElementById("ques73").innerHTML);
+            if (question7 == ans7) {
+                count++;
+                $("#ques73").css('backgroundColor', 'green');
+            } else {
+                $("#ques73").css('backgroundColor', 'red');
+            }
+            $("#ques73").css('color', 'white');
+
+        } else {
+            var question7 = ("null");
+        }
+
+
+        //eighth question
+        if (document.getElementById("rad22").checked == true) {
+            var question8 = (document.getElementById("ques81").innerHTML);
+            if (question8 == ans8) {
+                count++;
+                $("#ques81").css('backgroundColor', 'green');
+            } else {
+                $("#ques81").css('backgroundColor', 'red');
+            }
+            $("#ques81").css('color', 'white');
+
+        } else if (document.getElementById("rad23").checked == true) {
+            var question8 = (document.getElementById("ques82").innerHTML);
+            if (question8 == ans8) {
+                count++;
+                $("#ques82").css('backgroundColor', 'green');
+            } else {
+                $("#ques82").css('backgroundColor', 'red');
+            }
+            $("#ques82").css('color', 'white');
+
+        } else if (document.getElementById("rad24").checked == true) {
+            var question8 = (document.getElementById("ques83").innerHTML);
+            if (question8 == ans8) {
+                count++;
+                $("#ques83").css('backgroundColor', 'green');
+            } else {
+                $("#ques83").css('backgroundColor', 'red');
+            }
+            $("#ques83").css('color', 'white');
+
+        } else {
+            var question8 = ("null");
+        }
+
+
+        //ninth question
+        if (document.getElementById("rad25").checked == true) {
+            var question9 = (document.getElementById("ques91").innerHTML);
+            if (question9 == ans9) {
+                count++;
+                $("#ques91").css('backgroundColor', 'green');
+            } else {
+                $("#ques91").css('backgroundColor', 'red');
+            }
+            $("#ques91").css('color', 'white');
+
+        } else if (document.getElementById("rad26").checked == true) {
+            var question9 = (document.getElementById("ques92").innerHTML);
+            if (question9 == ans9) {
+                count++;
+                $("#ques92").css('backgroundColor', 'green');
+            } else {
+                $("#ques92").css('backgroundColor', 'red');
+            }
+            $("#ques92").css('color', 'white');
+
+        } else if (document.getElementById("rad27").checked == true) {
+            var question9 = (document.getElementById("ques93").innerHTML);
+            if (question9 == ans9) {
+                count++;
+                $("#ques93").css('backgroundColor', 'green');
+            } else {
+                $("#ques93").css('backgroundColor', 'red');
+            }
+            $("#ques93").css('color', 'white');
+
+        } else {
+            var question9 = ("null");
+        }
+
+
+
+        //tenth question
+        if (document.getElementById("rad28").checked == true) {
+            var question10 = (document.getElementById("ques101").innerHTML);
+
+            if (question10 == ans10) {
+                count++;
+                $("#ques101").css('backgroundColor', 'green');
+            } else {
+                $("#ques101").css('backgroundColor', 'red');
+            }
+            $("#ques101").css('color', 'white');
+
+        } else if (document.getElementById("rad29").checked == true) {
+            var question10 = (document.getElementById("ques102").innerHTML);
+
+            if (question10 == ans10) {
+                count++;
+                $("#ques102").css('backgroundColor', 'green');
+            } else {
+                $("#ques102").css('backgroundColor', 'red');
+            }
+            $("#ques102").css('color', 'white');
+
+
+        } else if (document.getElementById("rad30").checked == true) {
+            var question10 = (document.getElementById("ques103").innerHTML);
+
+            if (question10 == ans10) {
+                count++;
+                $("#ques103").css('backgroundColor', 'green');
+            } else {
+                $("#ques103").css('backgroundColor', 'red');
+            }
+            $("#ques103").css('color', 'white');
+
+
+        } else {
+            var question10 = ("null");
+        }
+
+        // alert(question1);
+        // alert(question2);
+        // alert(question3);
+        // alert(question4);
+        // alert(question5);
+        // alert(question6);
+        // alert(question7);
+        // alert(question8);
+        // alert(question9);
+        // alert(question10);
+        alert(count);
+        $("#timer").css('display', 'none')
+
+        //#region disable radio button
+
+        document.getElementById("rad1").disabled = true;
+        document.getElementById("rad2").disabled = true;
+        document.getElementById("rad3").disabled = true;
+        document.getElementById("rad4").disabled = true;
+        document.getElementById("rad5").disabled = true;
+        document.getElementById("rad6").disabled = true;
+        document.getElementById("rad7").disabled = true;
+        document.getElementById("rad8").disabled = true;
+        document.getElementById("rad9").disabled = true;
+        document.getElementById("rad10").disabled = true;
+        document.getElementById("rad11").disabled = true;
+        document.getElementById("rad12").disabled = true;
+        document.getElementById("rad13").disabled = true;
+        document.getElementById("rad14").disabled = true;
+        document.getElementById("rad15").disabled = true;
+        document.getElementById("rad16").disabled = true;
+        document.getElementById("rad17").disabled = true;
+        document.getElementById("rad18").disabled = true;
+        document.getElementById("rad19").disabled = true;
+        document.getElementById("rad20").disabled = true;
+        document.getElementById("rad21").disabled = true;
+        document.getElementById("rad22").disabled = true;
+        document.getElementById("rad23").disabled = true;
+        document.getElementById("rad24").disabled = true;
+        document.getElementById("rad25").disabled = true;
+        document.getElementById("rad26").disabled = true;
+        document.getElementById("rad27").disabled = true;
+        document.getElementById("rad28").disabled = true;
+        document.getElementById("rad29").disabled = true;
+        document.getElementById("rad30").disabled = true;
+        //#endregion
+
+
+
+
+        
+
+    //#region  correct answers
+
+    if ( document.getElementById("ques11").innerHTML ==ans1){
+        $("#ques11").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques12").innerHTML ==ans1){
+        $("#ques12").css('backgroundColor', 'green');
+    }else if(document.getElementById("ques13").innerHTML ==ans1){
+        $("#ques13").css('backgroundColor', 'green');
+    }else {
+    }
+
+    if ( document.getElementById("ques21").innerHTML ==ans2){
+        $("#ques21").css('backgroundColor', 'green');
+    }else if(document.getElementById("ques22").innerHTML ==ans2){
+        $("#ques22").css('backgroundColor', 'green');
+    }else if(document.getElementById("ques23").innerHTML ==ans2){
+        $("#ques23").css('backgroundColor', 'green');
+    }else {
+        
+    }
+
+    if ( document.getElementById("ques31").innerHTML ==ans3){
+        $("#ques31").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques32").innerHTML ==ans3){
+        $("#ques32").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques33").innerHTML ==ans3){
+        $("#ques33").css('backgroundColor', 'green');
+
+    }else {
+        
+    }
+
+
+    if ( document.getElementById("ques41").innerHTML ==ans4){
+        $("#ques41").css('backgroundColor', 'green');
+    }else if(document.getElementById("ques42").innerHTML ==ans4){
+        $("#ques42").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques43").innerHTML ==ans4){
+        $("#ques43").css('backgroundColor', 'green');
+    }else {
+        
+    }
+
+
+    if ( document.getElementById("ques51").innerHTML ==ans5){
+        $("#ques51").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques52").innerHTML ==ans5){
+        $("#ques52").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques53").innerHTML ==ans5){
+        $("#ques53").css('backgroundColor', 'green');
+    }else {
+        
+    }
+
+    if ( document.getElementById("ques61").innerHTML ==ans6){
+        $("#ques61").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques62").innerHTML ==ans6){
+        $("#ques62").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques63").innerHTML ==ans6){
+        $("#ques63").css('backgroundColor', 'green');
+    }else {
+        
+    }
+
+    if ( document.getElementById("ques71").innerHTML ==ans7){
+        $("#ques71").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques72").innerHTML ==ans7){
+        $("#ques72").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques73").innerHTML ==ans7){
+        $("#ques73").css('backgroundColor', 'green');
+    }else {
+        
+    }
+
+    if ( document.getElementById("ques81").innerHTML ==ans8){
+        $("#ques81").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques82").innerHTML ==ans8){
+        $("#ques12").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques83").innerHTML ==ans8){
+        $("#ques83").css('backgroundColor', 'green');
+    }else {
+        
+    }
+
+    if ( document.getElementById("ques91").innerHTML ==ans9){
+        $("#ques91").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques92").innerHTML ==ans9){
+        $("#ques92").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques93").innerHTML ==ans9){
+        $("#ques93").css('backgroundColor', 'green');
+
+    }else {
+        
+    }
+
+    if ( document.getElementById("ques101").innerHTML ==ans10){
+        $("#ques101").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques102").innerHTML ==ans10){
+        $("#ques102").css('backgroundColor', 'green');
+
+    }else if(document.getElementById("ques103").innerHTML ==ans10){
+        $("#ques103").css('backgroundColor', 'green');
+    }else {
+        
+    }
+    //#endregion
+
+
+
+    }
+
 
 })
