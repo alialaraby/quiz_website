@@ -17,23 +17,45 @@ $(document).ready(function () {
     signed_in = false;
     $('#btn_signup').click(function () {
 
-        
-        var password = "";
-        isAdmin = false;
-        if ($('#More_Options').prop("checked")) {
-            password = $('#adminPass').val();
-            if (password == 'ali1234') {
-                isAdmin = true;
-                completeSignup(password, isAdmin);
-            } else {
-                alert('admin password is not correct, to get one contact the awesome developers');
-            }
-        } else {
-            password = $("#pass").val();
+        if ($('#fname').val() == "") {
+            $('#fname').css({'border':'2px solid #FB6767'})
+            $('#fname_span').css({'display':'inline', 'color':'#FB6767'})
+        }else if ($('#lname').val() == "") {
+            $('#fname_span').css({'display':'none'})
+            $('#fname').css({'border':'2px solid rgb(45, 175, 95)'})
+            $('#lname').css({'border':'2px solid #FB6767'})
+            $('#lname_span').css({'display':'inline', 'color':'#FB6767'})
+        }else if (!validateEmail($('#email').val())) {
+            $('#lname_span').css({'display':'none'})
+            $('#lname').css({'border':'2px solid rgb(45, 175, 95)'})
+            $('#email').css({'border':'2px solid #FB6767'})
+            $('#email_span').css({'display':'inline', 'color':'#FB6767'})
+        }else {
+            var password = "";
             isAdmin = false;
-            completeSignup(password, isAdmin);
+            if ($('#More_Options').prop("checked")) {
+                password = $('#adminPass').val();
+                if (password == 'ali1234') {
+                    isAdmin = true;
+                    completeSignup(password, isAdmin);
+                } else {
+                    $('#email_span').css({'display':'none'})
+                    $('#email').css({'border':'2px solid rgb(45, 175, 95)'})
+                    $('#adminPass').css({'border':'2px solid #FB6767'})
+                    alert('admin password is not correct, to get one contact the awesome developers');
+                }
+            } else {
+                password = $("#pass").val();
+                if (password == "") {
+                    $('#email_span').css({'display':'none'})
+                    $('#email').css({'border':'2px solid rgb(45, 175, 95)'})
+                    $('#pass').css({'border':'2px solid #FB6767'})
+                } else {
+                    isAdmin = false;
+                    completeSignup(password, isAdmin);
+                }
+            }    
         }
-        
         
     })
 })
@@ -98,4 +120,9 @@ function completeSignup(userPass, isAdmin) {
             window.location.assign("quizes.html");
         }
     }
+}
+
+function validateEmail(email){
+    var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    return emailReg.test(email);
 }
