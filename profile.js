@@ -15,7 +15,7 @@ $(document).ready(function () {
     for(var i=0; i<takenQuizesArray.length; i++){
         //find the current user to get the courses he took
         if (takenQuizesArray[i].loggedUserMail == userMail) {
-            createQuizItem(takenQuizesArray[i].quizName, 50);
+            createQuizItem(takenQuizesArray[i].quizName, takenQuizesArray[i].grade);
         }
     }
 
@@ -45,11 +45,31 @@ $(document).ready(function () {
         }        
     }
     
+    var items = $('.list-group-item span');
+    console.log(items)
+    for(var i=0; i<items.length; i++){
+        if (items[i].innerText < 3) {
+            $(items[i]).parent().css('background-color', "#FF3925")
+            $(items[i]).parent().css('color', "white")
+        }else if (items[i].innerText >= 3 && items[i].innerText < 4) {
+            $(items[i]).parent().css('background-color', "#FF9600")
+            $(items[i]).parent().css('color', "white")
+        }else if (items[i].innerText >= 4 && items[i].innerText < 6) {
+            $(items[i]).parent().css('background-color', "#FFE500")
+            $(items[i]).parent().css('color', "white")
+        }else if (items[i].innerText >= 6 && items[i].innerText < 8) {
+            $(items[i]).parent().css('background-color', "#CDF03A")
+            $(items[i]).parent().css('color', "white")
+        }else if (items[i].innerText >= 8) {
+            $(items[i]).parent().css('background-color', "#2CE574")
+            $(items[i]).parent().css('color', "white")
+        }
+    }
 })
 
 function createQuizItem(quizName, quizGrade) {
     var newQuizCard = document.createElement('li');
-    newQuizCard.innerHTML = "<li class='list-group-item'><i class='fas fa-file-alt'></i> "+ quizName +" : " + quizGrade + "</li>"
+    newQuizCard.innerHTML = "<li class='list-group-item'><i class='fas fa-file-alt'></i> "+ quizName +" : <span>" + quizGrade + "</span></li>"
     $(newQuizCard).css("list-style", 'none');
     $('#grade_list_group').append(newQuizCard);
 }

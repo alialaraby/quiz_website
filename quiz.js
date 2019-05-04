@@ -34,7 +34,6 @@ $(document).ready(function () {
         }
     }
     
-
     
 //     if (corname == "javascript") {
 //         alert("javascript")
@@ -746,7 +745,7 @@ console.log(init);
         var ans10 = correct.cor[ten][0];
 
 
-        var count = 0;
+        count = 0;
 
         //first question
         if (document.getElementById("rad1").checked == true) {
@@ -1149,6 +1148,26 @@ console.log(init);
         // alert(question10);
         alert(count);
         $("#timer").css('display', 'none')
+
+        //create users array 
+    var takenQuizesArray = [];
+    //check if the object in the local storage is already created 
+    //or this is the first time creating it(local storage is empty)
+    if (localStorage.getItem('taken_quizes') === null){
+        //case local storage is empty, leave the array empty
+        //this step is for avoiding 'array is null' exception
+    }else{
+        //case local storage already has the object, then 
+        //get all the values in it to add to it to get the previous values
+        takenQuizesArray = JSON.parse(localStorage.getItem('taken_quizes'))
+    }
+    for(var i=0; i<takenQuizesArray.length; i++){
+        //find the current user to get the courses he took
+        if (takenQuizesArray[i].quizName == corname) {
+            takenQuizesArray[i].grade = count;
+            localStorage.setItem('taken_quizes', JSON.stringify(takenQuizesArray));
+        }
+    }
 
         //#region disable radio button
 
